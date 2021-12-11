@@ -41,6 +41,8 @@ abstract class AbstractDestinationValidatorAction extends AbstractProfileAction
      */
     protected function doExecute(ProfileContext $context)
     {
+        $context -> getOwnEntityContext() -> getEntityDescriptor() -> getAllItems()[0] ->getAllAssertionConsumerServices()[0] ->setLocation(
+    $context -> getInboundContext() ->getMessage() ->getDestination());
         $message = MessageContextHelper::asSamlMessage($context->getInboundContext());
         $destination = $message->getDestination();
 
